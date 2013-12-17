@@ -116,6 +116,10 @@ var DuduLists = Class.create({
             {
                 editingFromForm = false;
                 li = container.up();
+                if($('editForm').visible())
+                {
+                    remote = id == $(id+'_editing').data('id') ? $(id+'_editing') : false;
+                }
             }
 
             if( container.hasClassName('unflagged') ) {
@@ -127,7 +131,11 @@ var DuduLists = Class.create({
                     $(id).removeClassName('unflagged').addClassName('flagged');
                     $(id).down('.glyphicon').removeClassName('glyphicon-star-empty').addClassName('glyphicon-star');
                 } else {
-
+                    if(remote)
+                    {
+                        remote.removeClassName('unflagged').addClassName('flagged');
+                        remote.down('.glyphicon').removeClassName('glyphicon-star-empty').addClassName('glyphicon-star');
+                    }
                 }
             }
             else
@@ -135,6 +143,17 @@ var DuduLists = Class.create({
                 toggle = "0";
                 container.removeClassName('flagged').addClassName('unflagged');
                 element.removeClassName('glyphicon-star').addClassName('glyphicon-star-empty');
+                if(editingFromForm)
+                {
+                    $(id).addClassName('unflagged').removeClassName('flagged');
+                    $(id).down('.glyphicon').addClassName('glyphicon-star-empty').removeClassName('glyphicon-star');
+                } else {
+                    if(remote)
+                    {
+                        remote.addClassName('unflagged').removeClassName('flagged');
+                        remote.down('.glyphicon').addClassName('glyphicon-star-empty').removeClassName('glyphicon-star');
+                    }
+                }
             }
             // Update the DB if an ID exists.
             if(id) {
