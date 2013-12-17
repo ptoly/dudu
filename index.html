@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DuDu</title>
+    <meta name="description" content="Fred's hair puller">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/modalbox.css">
+    <link rel="stylesheet" href="css/dudu.css">
+    <script src="js/prototype.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        var $j = jQuery.noConflict();
+        // $j is now an alias to the jQuery function; creating the new alias is optional.
+    </script>
+    <!--<script src="js/bootstrap.min.js"></script>-->
+    <script src="js/scriptaculous.js"></script>
+    <script src="js/modalbox.js"></script>
+    <script src="js/localstoragedb.min.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/jinplace-0.12.0.min.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body>
+<!--[if lt IE 8]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<div id="duduContainer" class="container">
+    <nav class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">DuDu</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <p class="navbar-text">For Folks Who Just Du</p>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+
+    <div class="row">
+        <div class="col-md-3">
+            <button class="btn btn-primary" onclick="localStorage.removeItem('db_dudus'); return false;">clear storage</button>
+        </div>
+        <div id="collapseMe" class="col-md-9">
+            <div class="row" id="activeDudusWrapper">
+                <div class="col-md-12">
+                    <form role="form" id="addDudu">
+                        <div class="form-group active unflagged">
+                            <input type="text" class="form-control" id="duduItem" placeholder="Enter New DuDu">
+                            <span data-favorite="0" class="glyphicon glyphicon-star-empty star favoriteToggle" id="favoriteToggle"></span>
+                        </div>
+                    </form>
+                    <ul id="activeDudusUL"></ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h5 id="completedDudus"></h5>
+                    <ul id="inactiveDudusUL" class="list-group"></ul>
+                </div>
+            </div>
+        </div>
+        <!--Hidden edit form-->
+        <div id="editForm" class="col-md-5" style="display:none;">
+
+        </div>
+    </div>
+</div>
+<!--Modal Confirmation Box-->
+<div class="warning" id="confirmDelete" style="display:none">
+   <p>Are y'all sure ya want to delete this Dudu?</p>
+   <input id="deleteDudu" class="btn btn-danger" type="button" value="Yo! Delete it.">
+   <input onclick="Modalbox.hide()" class="btn btn-default pull-right" type="button" value="Naw... Cancel"/>
+</div>
+
+</body>
+</html>
