@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f971a43d-913a-4653-bddb-aaad8134e43c" name="Default" comment="" />
+    <list default="true" id="f971a43d-913a-4653-bddb-aaad8134e43c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codekit-config.json" afterPath="$PROJECT_DIR$/codekit-config.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/main-ck.js" afterPath="$PROJECT_DIR$/js/main-ck.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/main.js" afterPath="$PROJECT_DIR$/js/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="dudu.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -56,15 +62,16 @@
       <file leaf-file-name="main.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="172" column="81" selection-start="6250" selection-end="6250" vertical-scroll-proportion="0.38679245" vertical-offset="2088" max-vertical-offset="3900">
+            <state line="152" column="4" selection-start="5326" selection-end="5326" vertical-scroll-proportion="0.5165094" vertical-offset="1623" max-vertical-offset="2895">
               <folding>
-                <element signature="e#8028#8306#0" expanded="false" />
-                <element signature="e#8370#9744#0" expanded="false" />
-                <element signature="e#9786#10449#0" expanded="false" />
-                <element signature="e#10555#11600#0" expanded="false" />
-                <element signature="e#11682#11780#0" expanded="false" />
-                <element signature="e#11816#12819#0" expanded="false" />
-                <element signature="e#12863#15716#0" expanded="false" />
+                <element signature="e#5326#8623#0" expanded="false" />
+                <element signature="e#8721#8999#0" expanded="false" />
+                <element signature="e#9063#10437#0" expanded="false" />
+                <element signature="e#10479#11142#0" expanded="false" />
+                <element signature="e#11248#12293#0" expanded="false" />
+                <element signature="e#12375#12473#0" expanded="false" />
+                <element signature="e#12509#13512#0" expanded="false" />
+                <element signature="e#13556#16409#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -95,6 +102,14 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitLogSettings">
+    <option name="myDateState">
+      <MyDateState />
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
@@ -112,7 +127,7 @@
     <option name="width" value="1543" />
     <option name="height" value="1418" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -214,7 +229,7 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.General" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/js" />
     <property name="FullScreen" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -242,6 +257,23 @@
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="sslv3">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="f971a43d-913a-4653-bddb-aaad8134e43c" name="Default" comment="" />
@@ -288,7 +320,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/js/main.js</url>
-          <line>262</line>
+          <line>275</line>
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="1" />
@@ -401,15 +433,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="172" column="81" selection-start="6250" selection-end="6250" vertical-scroll-proportion="0.38679245" vertical-offset="2088" max-vertical-offset="3900">
+        <state line="152" column="4" selection-start="5326" selection-end="5326" vertical-scroll-proportion="0.5165094" vertical-offset="1623" max-vertical-offset="2895">
           <folding>
-            <element signature="e#8028#8306#0" expanded="false" />
-            <element signature="e#8370#9744#0" expanded="false" />
-            <element signature="e#9786#10449#0" expanded="false" />
-            <element signature="e#10555#11600#0" expanded="false" />
-            <element signature="e#11682#11780#0" expanded="false" />
-            <element signature="e#11816#12819#0" expanded="false" />
-            <element signature="e#12863#15716#0" expanded="false" />
+            <element signature="e#5326#8623#0" expanded="false" />
+            <element signature="e#8721#8999#0" expanded="false" />
+            <element signature="e#9063#10437#0" expanded="false" />
+            <element signature="e#10479#11142#0" expanded="false" />
+            <element signature="e#11248#12293#0" expanded="false" />
+            <element signature="e#12375#12473#0" expanded="false" />
+            <element signature="e#12509#13512#0" expanded="false" />
+            <element signature="e#13556#16409#0" expanded="false" />
           </folding>
         </state>
       </provider>

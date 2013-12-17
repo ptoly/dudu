@@ -171,7 +171,10 @@ var DuduLists = Class.create({
             {
                 editingFromForm = false;
                 // If the form is activated for this dudu, we'll set the property
-                remote = id == $(id+'_editing').data('id') ? $(id+'_editing') : false;
+                if($('editForm').visible())
+                {
+                    remote = id == $(id+'_editing').data('id') ? $(id+'_editing') : false;
+                }
                 li = container.up();
             }
 
@@ -184,8 +187,12 @@ var DuduLists = Class.create({
                     container.removeClassName('active').addClassName('inactive');
                     remote.down('.done').checked = true;
                     element.next('span', 1).addClassName('disabled');
-                } else {
-
+                } else { // Ensure that the form, if activated for this dudo, also gets favorited
+                    if(remote)
+                    {
+                        remote.removeClassName('active').addClassName('inactive');
+                        remote.down('.done').checked = true;
+                    }
                 }
                 inactiveDudusUL.insert({ top: li });
                 // Update DB.
@@ -203,6 +210,12 @@ var DuduLists = Class.create({
                     $(id+'_editing').removeClassName('inactive').addClassName('active');
                     li.down('.done').checked = false;
                     element.next('span', 1).removeClassName('disabled');
+                } else { // Ensure that the form, if activated for this dudo, also gets favorited
+                    if(remote)
+                    {
+                        remote.addClassName('active').removeClassName('inactive');
+                        remote.down('.done').checked = false;
+                    }
                 }
                 activeDudusUL.insert({ bottom: li });
                 // Update DB.
