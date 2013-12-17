@@ -53,10 +53,7 @@
     </nav>
 
     <div class="row">
-        <div class="col-md-3">
-            <button class="btn btn-primary" onclick="localStorage.removeItem('db_dudus'); return false;">clear storage</button>
-        </div>
-        <div id="collapseMe" class="col-md-9">
+        <div id="collapseMe" class="col-md-8 col-md-offset-2">
             <div class="row" id="activeDudusWrapper">
                 <div class="col-md-12">
                     <form role="form" id="addDudu">
@@ -78,6 +75,11 @@
         <!--Hidden edit form-->
         <div id="editForm" class="col-md-5" style="display:none;">
 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-10 col-md-2">
+            <button class="btn btn-primary" onclick="localStorage.removeItem('db_dudus'); return false;">clear storage</button>
         </div>
     </div>
 </div>

@@ -172,70 +172,30 @@ var DuduLists = Class.create({
     {
         $('duduContainer').on('click','.done', function(event, element)
         {
-            var id, li, editingFromForm, container, remote;
+            var id, li, container, remote;
 
             container = element.up();
-
+            remote = this.remoteChecker(container);
+            li = container.hasClassName('duduEdit') ? remote.up() : container.up();
             id = container.hasClassName('duduEdit') ? container.data("id") : container.getAttribute("id"); // Get the record ID.
-
-            // If the checkbox location is in the the edit form, we'll need to do a bit of DOM manipulation
-            // so the associated input in the LI gets checked/unchecked too
-            if(container.hasClassName('duduEdit')) // Clicking from the form
-            {
-                editingFromForm = true;
-                remote = $(id); // Get the remote dudu wrapper element.
-                li = remote.up();
-            }
-            else // Clicking from a LI
-            {
-                editingFromForm = false;
-                // If the form is activated for this dudu, we'll set the property
-                if($('editForm').visible())
-                {
-                    remote = id == $(id+'_editing').data('id') ? $(id+'_editing') : false;
-                }
-                li = container.up();
-            }
 
             // Deactivate.
             if ( element.checked == true )
             {
                 container.removeClassName('active').addClassName('inactive');
-                if(editingFromForm)
-                {
-                    container.removeClassName('active').addClassName('inactive');
-                    remote.down('.done').checked = true;
-                    element.next('span', 1).addClassName('disabled');
-                } else { // Ensure that the form, if activated for this dudo, also gets favorited
-                    if(remote)
-                    {
-                        remote.removeClassName('active').addClassName('inactive');
-                        remote.down('.done').checked = true;
-                    }
-                }
+
                 inactiveDudusUL.insert({ top: li });
+
                 // Update DB.
                 dudusLibrary.update("todos", {ID: id}, function(row)
                 {
                     row.active = "0";
                     return row;
                 });
-            }
-            else // Activate.
-            {
+            } else { // Activate.
+
                 container.addClassName('active').removeClassName('inactive');
-                if(editingFromForm)
-                {
-                    $(id+'_editing').removeClassName('inactive').addClassName('active');
-                    li.down('.done').checked = false;
-                    element.next('span', 1).removeClassName('disabled');
-                } else { // Ensure that the form, if activated for this dudo, also gets favorited
-                    if(remote)
-                    {
-                        remote.addClassName('active').removeClassName('inactive');
-                        remote.down('.done').checked = false;
-                    }
-                }
+
                 activeDudusUL.insert({ bottom: li });
                 // Update DB.
                 dudusLibrary.update("todos", {ID: id}, function(row)
@@ -244,8 +204,39 @@ var DuduLists = Class.create({
                     return row;
                 });
             }
-
             dudusLibrary.commit();
+
+            // Remote element changes
+            if(remote !== null)
+            {
+                // Deactivate
+                if ( element.checked == true )
+                {
+                    if(remote.hasClassName('duduEdit')) // From the form context
+                    {
+                        remote.down('.done').checked = true;
+                        element.next('span', 1).addClassName('disabled');
+                        container.down('.glyphicon').removeClassName('favoriteToggle'); // Disable the favorite toggle.
+                    } else { // Ensure that the form, if activated for this dudo, also gets unchecked.
+                        remote.removeClassName('active').addClassName('inactive');
+                        remote.down('.done').checked = true;
+                    }
+                } else {
+                    // Activate
+                    if(remote.hasClassName('duduEdit'))
+                    {
+                        $(id+'_editing').removeClassName('inactive').addClassName('active');
+                        remote.down('.done').checked = false;
+                        element.next('span', 1).removeClassName('disabled');
+                        container.down('.glyphicon').addClassName('favoriteToggle'); // Enable the favorite toggle.
+                    } else { // Ensure that the form, if activated for this dudo, also gets favorited
+                        remote.addClassName('active').removeClassName('inactive');
+                        remote.down('.done').checked = false;
+                    }
+                }
+
+            }
+
             this.updateCompletedItemsHeader();
 
         }.bind(this));
@@ -342,18 +333,39 @@ var DuduLists = Class.create({
         this.editObserver();
     },
 
+    // This method checks to see if we need to mirror DOM
+    // updates in another element on the page. If there is
+    // no remote element to operate on it returns false, else
+    // it returns the container element to operate on.
+    remoteChecker: function(container)
+    {
+        var id, remote;
+
+        remote = null;
+        if(container.hasClassName('duduEdit'))
+        {
+            id = container.data("id");
+            remote = $(id); // Returns the remote LI.
+        } else {
+            id = container.getAttribute("id");
+            if( $(id+'_editing') !== null && id == $(id+'_editing').data('id') )
+            {
+                 remote = $(id+'_editing');
+            }
+        }
+        return remote;
+    },
+
     editObserver: function()
     {
-        $('duduContainer').on('dblclick','li', function(event, element)
+        $('collapseMe').on('dblclick','li', function(event, element)
         {
-            var id, todo, editForm, renderedForm;
+            var id, todo, editForm;
 
-            element.setAttribute('id', 'editing'); // Flag the LI for easy DOM manipulation
-
-            if( $('collapseMe').hasClassName('col-md-9') )
+            if( $('collapseMe').hasClassName('col-md-8') )
             {
                 // Show the form.
-                $('collapseMe').removeClassName('col-md-9').addClassName('col-md-4');
+                $('collapseMe').removeClassName('col-md-8').addClassName('col-md-4');
                 $('editForm').show();
 
                 // Populate the form.
@@ -367,7 +379,7 @@ var DuduLists = Class.create({
                 $('closeForm').observe('click', function()
                 {
                     element.removeAttribute('id');
-                    $('collapseMe').removeClassName('col-md-4').addClassName('col-md-9');
+                    $('collapseMe').removeClassName('col-md-4').addClassName('col-md-8');
                     $('editForm').hide();
                 });
             }
@@ -383,7 +395,7 @@ var DuduLists = Class.create({
         active = todo.active == 0 ? 'inactive ' : 'active ';
         id = todo.ID;
         // Populate the form with data from the clicked todo
-        editForm = new Template('<div class="'+active+'panel panel-default"><div class="panel-heading"><h3 class="panel-title""><div data-id="#{ID}" id="'+id+'_editing" class="duduEdit duduItem '+active+'"><input class="done" type="checkbox" value="1" '+checked+'>&nbsp;&nbsp;<span class="editable" data-attribute="text, #{ID}">#{text}</span><span class="glyphicon glyphicon-star'+starClass+' pull-right duduItem star favoriteToggle" data-favorite="'+todo.favorite+'"></span></div></h3></div><ul class="list-group"><li class="list-group-item"><h6>Note:</h6><div class="well well-sm editable" data-type="textarea" data-attribute="note, #{ID}">#{note}</div></li></ul><div class="panel-footer text-center"><span class="glyphicon glyphicon-trash pull-left"></span><small>Created '+moment(todo.created).format("ddd, MMMM Do")+'</small> <span id="closeForm" class="glyphicon glyphicon-expand pull-right"></span></div></div>');
+        editForm = new Template('<div class="'+active+'panel panel-default"><div class="panel-heading"><h3 class="panel-title""><div data-id="#{ID}" id="'+id+'_editing" class="duduEdit duduItem '+active+'"><input class="done" type="checkbox" value="1" '+checked+'>&nbsp;&nbsp;<span class="editable" data-attribute="text, #{ID}">#{text}</span><span class="glyphicon glyphicon-star'+starClass+' pull-right duduItem star favoriteToggle" data-favorite="'+todo.favorite+'"></span></div></h3></div><ul class="list-group"><li class="list-group-item"><h6>Note:</h6><div class="note editable" data-type="textarea" data-attribute="note, #{ID}">#{note}</div></li></ul><div class="panel-footer text-center"><span class="glyphicon glyphicon-trash pull-left"></span><small>Created '+moment(todo.created).format("ddd, MMMM Do")+'</small> <span id="closeForm" class="glyphicon glyphicon-expand pull-right"></span></div></div>');
 
         renderedForm = editForm.evaluate(todo);
 
