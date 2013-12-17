@@ -100,7 +100,7 @@ var DuduLists = Class.create({
     {
         $('activeDudusWrapper','editForm').invoke('on','click','.favoriteToggle', function(event, element)
         {
-            var id, li, editingFromForm, container, remote, toggle;
+            var id, li, container, remote, toggle;
 
             container = element.up();
             remote = this.remoteChecker(container);
@@ -390,12 +390,15 @@ var DuduLists = Class.create({
                 // I've put the field and id into an array and passed it along
                 // @ fieldIdArray[0] = field
                 // @ fieldIdArray[1] = id
-                var array, id, field;
+                var array, id, field, remote, pencil, pencilExists;
 
                 array = opts.attribute.split(","); // Convert the attribute value to a usable array.
                 id = parseInt(array[1]);
-                field = array[0]; // No workie...
-
+                field = array[0];
+                remote = $j('#'+id);
+                pencilExists = $j(remote).find('.glyphicon').hasClass('glyphicon-pencil') ? true : false;
+                pencil = '<span class="glyphicon glyphicon-pencil"></span>';
+                                                              console.log(remote);
                 dudusLibrary.update("todos", {ID: id}, function(row) {
                     // The field var is not working in here so I'm using a switch...
                     switch(field) {
@@ -404,6 +407,14 @@ var DuduLists = Class.create({
                             break;
                         case 'note':
                             row.note = value;
+                            if(value && !pencilExists)
+                            {
+                                 $j(remote).append(pencil);
+                            }
+                            if(!value && pencilExists)
+                            {
+                                $j(remote).find('div.glyphicon-pencil').remove();
+                            }
                             break;
                     }
                     // the update callback function returns the modified record
@@ -415,7 +426,6 @@ var DuduLists = Class.create({
         });
 
         // Activate the trasher
-
         $('editForm').down('.glyphicon-trash').observe('click', function(e){
             this.deleteDudu(id, todo.text);
         }.bind(this));
