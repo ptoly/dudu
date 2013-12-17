@@ -103,57 +103,38 @@ var DuduLists = Class.create({
             var id, li, editingFromForm, container, remote, toggle;
 
             container = element.up();
+            remote = this.remoteChecker(container);
+            li = container.hasClassName('duduEdit') ? remote.up() : container.up();
             id = container.hasClassName('duduEdit') ? container.data("id") : container.getAttribute("id"); // Get the record ID.
 
-            // Check to see if we need to toggle a remote favorite toggle.
-            if(container.hasClassName('duduEdit')) // Clicking from the form
-            {
-                editingFromForm = true;
-                remote = $(id); // Get the remote dudu wrapper element.
-                li = remote.up();
-            }
-            else // Clicking from a LI
-            {
-                editingFromForm = false;
-                li = container.up();
-                if($('editForm').visible())
-                {
-                    remote = id == $(id+'_editing').data('id') ? $(id+'_editing') : false;
-                }
-            }
-
+            // Flag
             if( container.hasClassName('unflagged') ) {
                 toggle = "1";
                 container.removeClassName('unflagged').addClassName('flagged');
                 element.removeClassName('glyphicon-star-empty').addClassName('glyphicon-star');
-                if(editingFromForm)
-                {
-                    $(id).removeClassName('unflagged').addClassName('flagged');
-                    $(id).down('.glyphicon').removeClassName('glyphicon-star-empty').addClassName('glyphicon-star');
-                } else {
-                    if(remote)
-                    {
-                        remote.removeClassName('unflagged').addClassName('flagged');
-                        remote.down('.glyphicon').removeClassName('glyphicon-star-empty').addClassName('glyphicon-star');
-                    }
-                }
             }
-            else
+            else // Unflag
             {
                 toggle = "0";
                 container.removeClassName('flagged').addClassName('unflagged');
                 element.removeClassName('glyphicon-star').addClassName('glyphicon-star-empty');
-                if(editingFromForm)
+            }
+
+            // Remote element changes
+            if(remote !== null)
+            {
+                // Flag
+                if ( container.hasClassName('unflagged') )
                 {
-                    $(id).addClassName('unflagged').removeClassName('flagged');
-                    $(id).down('.glyphicon').addClassName('glyphicon-star-empty').removeClassName('glyphicon-star');
+                    remote.addClassName('unflagged').removeClassName('flagged');
+                    remote.down('.glyphicon').addClassName('glyphicon-star-empty').removeClassName('glyphicon-star');
+
                 } else {
-                    if(remote)
-                    {
-                        remote.addClassName('unflagged').removeClassName('flagged');
-                        remote.down('.glyphicon').addClassName('glyphicon-star-empty').removeClassName('glyphicon-star');
-                    }
+                    // Unflag
+                    remote.removeClassName('unflagged').addClassName('flagged');
+                    remote.down('.glyphicon').removeClassName('glyphicon-star-empty').addClassName('glyphicon-star');
                 }
+
             }
             // Update the DB if an ID exists.
             if(id) {
@@ -163,7 +144,7 @@ var DuduLists = Class.create({
                 });
                 dudusLibrary.commit();
             }
-        });
+        }.bind(this));
     },
 
     // Watch the done checkbox and arrange elements accordingly,

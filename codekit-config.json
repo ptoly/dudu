@@ -2,25 +2,16 @@
   "CodeKitInfo" : "This is a CodeKit project configuration file. It is designed to sync project settings across multiple machines. Modifying the contents of this file can be a poor life decision if you don't know what you're doing. This file is not useful unless accompanied by the project that created it in CodeKit. For more information, see: http:\/\/incident57.com\/codekit",
   "creatorBuild" : "8403",
   "files" : {
-    "\/js\/dragdrop.js" : {
+    "\/js\/slider.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/js\/dragdrop.js",
+      "inputAbbreviatedPath" : "\/js\/slider.js",
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/js\/dragdrop-ck.js",
+      "outputAbbreviatedPath" : "\/js\/slider-ck.js",
       "fileType" : 64
-    },
-    "\/css\/bootstrap-theme.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/css\/bootstrap-theme.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
     },
     "\/css\/img\/beach.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -32,6 +23,17 @@
       "outputAbbreviatedPath" : "\/css\/img\/beach.jpg",
       "initialSize" : 2045026,
       "fileType" : 4096
+    },
+    "\/js\/dragdrop.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/js\/dragdrop.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/js\/dragdrop-ck.js",
+      "fileType" : 64
     },
     "\/js\/bootstrap.min.js" : {
       "ignoreWasSetByUser" : 0,
@@ -62,22 +64,16 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
-    "\/css\/less\/lesshat.less" : {
-      "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/css\/less\/lesshat.less",
-      "outputAbbreviatedPath" : "\/css\/css\/lesshat.css",
-      "outputPathIsSetByUser" : 0,
-      "strictUnits" : 0,
-      "relativeURLS" : 0,
-      "ignore" : 1,
-      "strictImports" : 0,
+    "\/css\/img\/sprite-footer.png" : {
       "ignoreWasSetByUser" : 0,
-      "shouldRunBless" : 0,
+      "ignore" : 0,
       "hidden" : 0,
-      "strictMath" : 0,
-      "outputStyle" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/css\/img\/sprite-footer.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/css\/img\/sprite-footer.png",
+      "initialSize" : 116027,
+      "fileType" : 8192
     },
     "\/css\/dudu.css" : {
       "ignoreWasSetByUser" : 0,
@@ -99,16 +95,22 @@
       "outputAbbreviatedPath" : "\/js\/modalbox-ck.js",
       "fileType" : 64
     },
-    "\/css\/img\/sprite-footer.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
+    "\/css\/less\/lesshat.less" : {
+      "ieCompatibility" : 1,
+      "inputAbbreviatedPath" : "\/css\/less\/lesshat.less",
+      "outputAbbreviatedPath" : "\/css\/css\/lesshat.css",
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/css\/img\/sprite-footer.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/css\/img\/sprite-footer.png",
-      "initialSize" : 116027,
-      "fileType" : 8192
+      "strictUnits" : 0,
+      "relativeURLS" : 0,
+      "ignore" : 1,
+      "strictImports" : 0,
+      "ignoreWasSetByUser" : 0,
+      "shouldRunBless" : 0,
+      "hidden" : 0,
+      "strictMath" : 0,
+      "outputStyle" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/css\/bootstrap.min.css" : {
       "ignoreWasSetByUser" : 0,
@@ -216,15 +218,6 @@
       "initialSize" : 185267,
       "fileType" : 4096
     },
-    "\/css\/bootstrap.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/css\/bootstrap.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
-    },
     "\/css\/less\/dudu.less" : {
       "ieCompatibility" : 1,
       "inputAbbreviatedPath" : "\/css\/less\/dudu.less",
@@ -241,6 +234,15 @@
       "outputStyle" : 1,
       "fileType" : 1,
       "debugStyle" : 0
+    },
+    "\/css\/bootstrap.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/css\/bootstrap.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/js\/jinplace-0.12.0.min.js" : {
       "ignoreWasSetByUser" : 0,
@@ -306,16 +308,14 @@
       "outputAbbreviatedPath" : "\/js\/moment.min-ck.js",
       "fileType" : 64
     },
-    "\/js\/unittest.js" : {
+    "\/css\/bootstrap-theme.css" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/js\/unittest.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/js\/unittest-ck.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/css\/bootstrap-theme.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/js\/prototype.js" : {
       "ignoreWasSetByUser" : 0,
@@ -328,15 +328,15 @@
       "outputAbbreviatedPath" : "\/js\/prototype-ck.js",
       "fileType" : 64
     },
-    "\/js\/slider.js" : {
+    "\/js\/unittest.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/js\/slider.js",
+      "inputAbbreviatedPath" : "\/js\/unittest.js",
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/js\/slider-ck.js",
+      "outputAbbreviatedPath" : "\/js\/unittest-ck.js",
       "fileType" : 64
     }
   },
